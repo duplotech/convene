@@ -1,0 +1,13 @@
+#!/bin/sh
+SRC='src/Convene.elm';
+OUT='dist/index.html';
+
+elm-server --help > /dev/null 2> /dev/null;
+HAS_SERVER=$?;
+
+if [ "$HAS_SERVER" -eq 0 ]; then
+  elm server "$SRC" --output "$OUT";
+else
+  npm install -g elm-server;
+  elm server "$SRC" --output "$OUT";
+fi;
